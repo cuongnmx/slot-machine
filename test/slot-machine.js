@@ -209,8 +209,22 @@ describe('SlotMachine', function() {
       assert.isTrue(spy.called);
     });
 
+    it('should display the status', function(done) {
+      this.timeout(10000);
+      event.triggerClickEvent(startButton);
+      setTimeout(function() {
+        assert.isString(resultContainer.querySelector('p').innerHTML);
+        done();
+      }, 5000);
+    });
+
     it('should request to try again', function(done) {
       this.timeout(10000);
+      slotMachine.reels.forEach(function(reel, index) {
+        reel.updateSelectedIndex = function() {
+          return index;
+        };
+      });
       event.triggerClickEvent(startButton);
       setTimeout(function() {
         assert.equal(resultContainer.querySelector('p').innerHTML, 'Better luck next time.');
