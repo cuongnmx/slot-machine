@@ -38,6 +38,7 @@ body {
 
 .heading {
   font-size: 32px;
+  margin-top: 20px;
 }
 
 .description {
@@ -50,11 +51,18 @@ body {
   font-size: 0;
 }
 
-.reel {
+.reel-coffee {
   display: inline-block;
   height: 100px;
   width: 100px;
-  background: url(sprites.png) repeat-y;
+  background: url(coffee.png) repeat-y;
+}
+
+.reel-fruit {
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  background: url(fruit.png) repeat-y;
 }
 
 .result {
