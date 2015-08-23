@@ -11,6 +11,9 @@ slot-machine
 ---
 [![demo](http://i.imgur.com/wnkvEIr.png)](http://sarbbottam.github.io/slot-machine/)
 
+Accessibility walk through
+---
+Please refer [this youtube video](https://www.youtube.com/watch?v=gXywORUdpIM)
 Usage
 ---
 
