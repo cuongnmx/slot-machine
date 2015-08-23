@@ -86,10 +86,6 @@ function SlotMachine(config) {
     throw 'sequence must be an array';
   }
 
-  if (sequence.length !== reels.length) {
-    throw 'sequence must have equal number for entries with respect to reels';
-  }
-
   this.sequence = sequence;
 
   if( !(reels instanceof Array) ) {
@@ -110,6 +106,11 @@ function SlotMachine(config) {
     }
     this.reels.push(new Reel(reels[i], this.reelNodes[i]));
   }
+
+  if (sequence.length !== reels[0].length) {
+    throw 'sequence must have equal number of entries with respect to reels';
+  }
+
 
 }
 

@@ -118,16 +118,6 @@ describe('SlotMachine', function() {
       }
     });
 
-    it('should throw an error if the passed sequence\'s length is not equal to passed reel\'s length', function() {
-      try {
-        slotMachineData.sequence = [''];
-        slotMachineData.reels = '';
-        slotMachine = new SlotMachine(slotMachineData);
-      } catch(e) {
-        assert.equal(e, 'sequence must have equal number for entries with respect to reels');
-      }
-    });
-
     it('should throw an error if the passed reel is not an array', function() {
       try {
         slotMachineData.sequence = [''];
@@ -165,6 +155,16 @@ describe('SlotMachine', function() {
         slotMachine = new SlotMachine(slotMachineData);
       } catch(e) {
         assert.equal(e, 'all the reels must be of same number of slots');
+      }
+    });
+
+    it('should throw an error if the passed sequence\'s length is not equal to passed reel\'s length', function() {
+      try {
+        slotMachineData.sequence = [''];
+        slotMachineData.reels = [['', '', ''], ['', '', ''], ['', '', '']];
+        slotMachine = new SlotMachine(slotMachineData);
+      } catch(e) {
+        assert.equal(e, 'sequence must have equal number of entries with respect to reels');
       }
     });
 
