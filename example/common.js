@@ -42,11 +42,11 @@ var reelFruit3 = document.getElementById('reel-fruit-3');
 
 var slotMachineFruit = new SlotMachine({
   reels: [
-      ['apple', 'orange', 'papaya'],
-      ['apple', 'orange', 'papaya'],
-      ['apple', 'orange', 'papaya']
+      ['pear', 'fig', 'persimmon', 'maskmelon', 'kiwi', 'apple', 'papaya', 'orange'],
+      ['pear', 'fig', 'persimmon', 'maskmelon', 'kiwi', 'apple', 'papaya', 'orange'],
+      ['pear', 'fig', 'persimmon', 'maskmelon', 'kiwi', 'apple', 'papaya', 'orange']
     ],
-  sequence: ['apple', 'orange', 'papaya'],
+  sequence: ['pear', 'fig', 'persimmon', 'maskmelon', 'kiwi', 'apple', 'papaya', 'orange'],
   reelNodes: [reelFruit1, reelFruit2, reelFruit3],
   reelContainer: reelContainerFruit,
   startButton: startButtonFruit,
