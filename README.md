@@ -7,6 +7,10 @@ slot-machine
 
 [![sauce browser matrix](https://saucelabs.com/browser-matrix/sarbbottam.svg)](https://saucelabs.com/u/sarbbottam)
 
+[Demo](http://sarbbottam.github.io/slot-machine/)
+---
+[![demo](http://i.imgur.com/wnkvEIr.png)](http://sarbbottam.github.io/slot-machine/)
+
 Usage
 ---
 
