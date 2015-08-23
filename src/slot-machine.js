@@ -5,6 +5,16 @@ var MIN_SPEED = 12;
 var SPIN_COUNT = 10;
 var Reel = require('./reel');
 
+/* istanbul ignore next */
+window.requestAnimationFrame = (function() {
+  return window.requestAnimationFrame ||
+          window.webkitRequestAnimationFrame ||
+          window.mozRequestAnimationFrame ||
+          function( callback ) {
+            window.setTimeout(callback, 1000 / 60);
+          };
+})();
+
 /**
  * returns a SlotMachine.
  * @class SlotMachine
@@ -143,9 +153,9 @@ function spin(index) {
   if (reel.currentPosition < reel.stopPosition) {
     reel.spinning = true;
     reel.node.style.backgroundPosition = '0px ' + reel.currentPosition + 'px';
-    setTimeout(function() {
+    window.requestAnimationFrame(function() {
       spin.bind(this)(index);
-    }.bind(this), 1000 / 60);
+    }.bind(this));
   } else {
     reel.spinning = false;
     /* set the background-position-y to stopPosition */
