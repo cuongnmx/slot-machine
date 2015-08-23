@@ -9,7 +9,8 @@ if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
     git config user.email "sarbbottam@gmail.com"
     cp ../example/index.html ./index.html
     cp ../example/main.css ./main.css
-    cp ../example/sprites.png ./sprites.png
+    cp ../example/coffee.png ./coffee.png
+    cp ../example/fruit.png ./fruit.png
     cp ../example/main.js ./main.js
     git add .
     git commit -m "initial commit"
