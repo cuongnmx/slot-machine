@@ -73,3 +73,12 @@ Want to improve the functionality
 * `grunt dev` will start watching for any changes and trigger the necessary tasks. Refer the `tasks` folder for task related details.
 * `grunt js:ci` will test the functionality against SauceLabs.
 * prior using grunt js:ci, `export` `SAUCE_USERNAME` & `SAUCE_ACCESS_KEY`
+
+Acknowledgement
+---
+
+* fruit icons have been downloaded from [all-free-download.com](http://all-free-download.com/free-vector/download/exotic_fruit_icon_set_310476_download.html)
+* coffee beans from [charlestoncoffeeexchange.com]( http://charlestoncoffeeexchange.com/wp-content/uploads/2013/05/coffee-bean-extract1.jpg)
+* tea leaves from [images.wisegeek.com](http://images.wisegeek.com/looseleaf-black-tea-with-two-fresh-tea-leaves.jpg)
+* expresso from [ultimateespresso.com](http://www.ultimateespresso.com/wp-content/uploads/IMG_1764-2.jpg)
+* sprites generated at [spritepad.wearekiss.com](http://spritepad.wearekiss.com/)
