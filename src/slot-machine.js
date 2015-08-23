@@ -2,6 +2,8 @@
 
 var MAX_SPEED = 25;
 var MIN_SPEED = 12;
+var MAX_SPIN = 9;
+var MIN_SPIN = 12;
 var Reel = require('./reel');
 
 /**
@@ -187,6 +189,7 @@ function start() {
   this.reels.forEach(function(reel, index) {
     /* randomly choose which slot is to selected */
     var selectedIndex = reel.updateSelectedIndex();
+    var spinCount = Math.floor( Math.random() * (MAX_SPIN - MIN_SPIN + 1)) + MIN_SPEED;
     /*
      * store the selectedIndex in the selectedIndexes
      * it will be used to detect the option during jackpot
@@ -200,10 +203,8 @@ function start() {
      * remove the hard coding and expect it passed during instantiation of the SlotMachine
      * 300 height of the sprite
      * 100 height of each slot/icons
-     * 10 should be moved to a constant or a random number;
-     * it specifies how many times a reel will be rotated before coming to a stop
      */
-    reel.stopPosition = (300 * 10) + ( (selectedIndex + 1) * 100);
+    reel.stopPosition = (300 * spinCount) + ( (selectedIndex + 1) * 100);
     spin.bind(this)(index);
   }.bind(this));
 
