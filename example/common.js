@@ -21,7 +21,7 @@ var slotMachineCoffee = new SlotMachine({
   resultContainer: resultContainerCoffee,
   slotHeight: 100,
   text: {
-    jackpot: 'Congratulations, you won a free {drink}.',
+    jackpot: 'Congratulations, you won a free {option}.',
     tryAgain: 'Better luck next time.'
   },
   css: {
@@ -53,7 +53,7 @@ var slotMachineFruit = new SlotMachine({
   resultContainer: resultContainerFruit,
   slotHeight: 100,
   text: {
-    jackpot: 'Congratulations, you won a free {drink}.',
+    jackpot: 'Congratulations, you won a free {option}.',
     tryAgain: 'Better luck next time.'
   },
   css: {

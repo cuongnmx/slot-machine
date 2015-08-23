@@ -172,7 +172,7 @@ function spin(index) {
        * fetch the the option from this.sequence
        * replace '{drink}' in the jackpot text with the option fetched.
        */
-      this.resultContainer.innerHTML = '<p class="' + this.css.result + '">' + this.text.jackpot.replace('{drink}', this.sequence[this.selectedIndexes[0]]) + '</p>';
+      this.resultContainer.innerHTML = '<p class="' + this.css.result + '">' + this.text.jackpot.replace('{option}', this.sequence[this.selectedIndexes[0]]) + '</p>';
     } else {
       /* or otherwise; try again */
       this.resultContainer.innerHTML = '<p class="' + this.css.result + '">' + this.text.tryAgain + '</p>';

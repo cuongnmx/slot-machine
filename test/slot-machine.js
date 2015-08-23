@@ -193,7 +193,7 @@ describe('SlotMachine', function() {
         resultContainer: resultContainer,
         slotHeight: 100,
         text: {
-          jackpot: 'Congratulations, you won a free {drink}.',
+          jackpot: 'Congratulations, you won a free {option}.',
           tryAgain: 'Better luck next time.'
         },
         css: {
