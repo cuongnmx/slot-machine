@@ -75,7 +75,7 @@ Want to improve the functionality
 * `npm i` or `sudo npm i` to install the dependencies
 * `grunt dev` will start watching for any changes and trigger the necessary tasks. Refer the `tasks` folder for task related details.
 * `grunt js:ci` will test the functionality against SauceLabs.
-* prior using grunt js:ci, `export` `SAUCE_USERNAME` & `SAUCE_ACCESS_KEY`
+* prior using `grunt js:ci`, `export` `SAUCE_USERNAME` & `SAUCE_ACCESS_KEY`
 
 Acknowledgement
 ---
@@ -94,4 +94,3 @@ Acknowledgement
 * coffee-grounds from [mshcdn.com](http://rack.3.mshcdn.com/media/ZgkyMDEzLzEwLzE0LzAwL2NvZmZlZWdyb3VuLmRhZTI2LmpwZwpwCXRodW1iCTg1MHg4NTA-CmUJanBn/ec2797f3/db8/coffee-grounds.jpg)
 * tea leaves from [englishteastore.com](http://www.englishteastore.com/media/catalog/product/cache/7/image/9df78eab33525d08d6e5fb8d27136e95/T/O/TOLSLL_EEV_-00_English-Evening-Tea-Loose-Leaf.jpg)
 * espresso beans from [hdwallpapers3d.com](http://www.hdwallpapers3d.com/wp-content/uploads/2013/04/Coffee-Beans-Wallpaper-brown-28239137-1920-1200.jpg)
-
