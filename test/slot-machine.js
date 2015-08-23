@@ -49,9 +49,28 @@ describe('SlotMachine', function() {
         reelNodes: [],
         reelContainer: 'not empty',
         startButton: 'not empty',
-        resultContainer: 'not empty'
+        resultContainer: 'not empty',
+        slotHeight: 10
       };
 
+    });
+
+    it('should throw an error if slotHeight is not be provided', function() {
+      try {
+        slotMachineData.slotHeight = null;
+        slotMachine = new SlotMachine(slotMachineData);
+      } catch(e) {
+        assert.equal(e, 'slotHeight must be provided');
+      }
+    });
+
+    it('should throw an error if slotHeight is not a number', function() {
+      try {
+        slotMachineData.slotHeight = 'string';
+        slotMachine = new SlotMachine(slotMachineData);
+      } catch(e) {
+        assert.equal(e, 'slotHeight must be a number');
+      }
     });
 
     it('should throw an error if resultContainer is not be provided', function() {
@@ -172,6 +191,7 @@ describe('SlotMachine', function() {
         reelContainer: reelContainer,
         startButton: startButton,
         resultContainer: resultContainer,
+        slotHeight: 100,
         text: {
           jackpot: 'Congratulations, you won a free {drink}.',
           tryAgain: 'Better luck next time.'

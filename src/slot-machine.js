@@ -16,6 +16,7 @@ var Reel = require('./reel');
  * @param {Object} config.css - css class names to be used by the SlotMachine.
  * @param {String} config.css.result - css class to be applied on the result Node
  * @param {String} config.css.jackpot - css class for jackpot highlight
+ * @param {Number} config.slotHeight - height of the each slots; all the slots must be of same height
  * @param {HTMLElement} resultContainer - container where result will be displayed.
  * @param {HTMLElement} startButton - to start the SlotMachine, on click of this button SlotMachine will be started
  * @param {HTMLElement} reelContainer - contanier which wraps the reels.
@@ -53,6 +54,15 @@ function SlotMachine(config) {
    * validate the passed argumenets
    * throw error on invalid arguments
    */
+  if (!config.slotHeight) {
+    throw 'slotHeight must be provided';
+  }
+
+  if (!config.slotHeight.toString().match(/^\d*$/)) {
+    throw 'slotHeight must be a number';
+  }
+  this.slotHeight = config.slotHeight;
+
   if (!config.resultContainer) {
     throw 'resultContainer must be provided';
   }
@@ -199,12 +209,11 @@ function start() {
     reel.speed = Math.floor( Math.random() * (MAX_SPEED - MIN_SPEED + 1)) + MIN_SPEED;
     reel.currentPosition = 0;
     /*
-     * ToDo
-     * remove the hard coding and expect it passed during instantiation of the SlotMachine
-     * 300 height of the sprite
-     * 100 height of each slot/icons
+     * calculate the stopPosition
+     * slotHeight * number of slots * spinCount will produce full spin stopPosition
+     * (selectedIndex + 1) * this.slotHeight will produce the offset for the currently selected slot
      */
-    reel.stopPosition = (300 * spinCount) + ( (selectedIndex + 1) * 100);
+    reel.stopPosition = (this.slotHeight * reel.slots.length * spinCount) + ( (selectedIndex + 1) * this.slotHeight);
     spin.bind(this)(index);
   }.bind(this));
 

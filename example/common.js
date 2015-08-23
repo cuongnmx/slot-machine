@@ -19,6 +19,7 @@ var slotMachine = new SlotMachine({
   reelContainer: reelContainer,
   startButton: startButton,
   resultContainer: resultContainer,
+  slotHeight: 100,
   text: {
     jackpot: 'Congratulations, you won a free {drink}.',
     tryAgain: 'Better luck next time.'
