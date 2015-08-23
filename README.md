@@ -85,3 +85,13 @@ Acknowledgement
 * tea leaves from [images.wisegeek.com](http://images.wisegeek.com/looseleaf-black-tea-with-two-fresh-tea-leaves.jpg)
 * expresso from [ultimateespresso.com](http://www.ultimateespresso.com/wp-content/uploads/IMG_1764-2.jpg)
 * sprites generated at [spritepad.wearekiss.com](http://spritepad.wearekiss.com/)
+* coffe maker from [clivecoffee.com](http://www.clivecoffee.com/t/product-zoom/mm5/graphics/00000001/bonavita_thermal_coffee_maker.jpg)
+* tea pot from [cloudfront.net](http://d3d71ba2asa5oz.cloudfront.net/52000777/images/chai-g.jpg)
+* espresso machine from [homedepot.com](http://www.homedepot.com/catalog/productImages/1000/74/741cbdfc-89ac-4310-bd0c-4763512b24c3_1000.jpg)
+* coffee filter from [bp.blogspot.com](http://1.bp.blogspot.com/-zRRZha-h3NI/UKLXMUg9rrI/AAAAAAAAALI/KTVz54pr1-s/s1600/coffee-filters.jpg)
+* tea-strainer from [personalised-jewellery.co.uk](http://www.personalised-jewellery.co.uk/user/products/large/revolving-tea-strainer-silver-plated-7247.jpg)
+* espresso tamper from [espressoparts.com](http://www.espressoparts.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/3/0/30ep5_bocote-2.jpg)
+* coffee-grounds from [mshcdn.com](http://rack.3.mshcdn.com/media/ZgkyMDEzLzEwLzE0LzAwL2NvZmZlZWdyb3VuLmRhZTI2LmpwZwpwCXRodW1iCTg1MHg4NTA-CmUJanBn/ec2797f3/db8/coffee-grounds.jpg)
+* tea leaves from [englishteastore.com](http://www.englishteastore.com/media/catalog/product/cache/7/image/9df78eab33525d08d6e5fb8d27136e95/T/O/TOLSLL_EEV_-00_English-Evening-Tea-Loose-Leaf.jpg)
+* espresso beans from [hdwallpapers3d.com](http://www.hdwallpapers3d.com/wp-content/uploads/2013/04/Coffee-Beans-Wallpaper-brown-28239137-1920-1200.jpg)
+
