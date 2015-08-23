@@ -2,8 +2,7 @@
 
 var MAX_SPEED = 25;
 var MIN_SPEED = 12;
-var MAX_SPIN = 9;
-var MIN_SPIN = 12;
+var SPIN_COUNT = 10;
 var Reel = require('./reel');
 
 /**
@@ -199,7 +198,6 @@ function start() {
   this.reels.forEach(function(reel, index) {
     /* randomly choose which slot is to selected */
     var selectedIndex = reel.updateSelectedIndex();
-    var spinCount = Math.floor( Math.random() * (MAX_SPIN - MIN_SPIN + 1)) + MIN_SPEED;
     /*
      * store the selectedIndex in the selectedIndexes
      * it will be used to detect the option during jackpot
@@ -210,10 +208,10 @@ function start() {
     reel.currentPosition = 0;
     /*
      * calculate the stopPosition
-     * slotHeight * number of slots * spinCount will produce full spin stopPosition
+     * slotHeight * number of slots * SPIN_COUNT will produce full spin stopPosition
      * (selectedIndex + 1) * this.slotHeight will produce the offset for the currently selected slot
      */
-    reel.stopPosition = (this.slotHeight * reel.slots.length * spinCount) + ( (selectedIndex + 1) * this.slotHeight);
+    reel.stopPosition = (this.slotHeight * reel.slots.length * SPIN_COUNT) + ( (selectedIndex + 1) * this.slotHeight);
     spin.bind(this)(index);
   }.bind(this));
 
