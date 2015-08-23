@@ -51,17 +51,32 @@ body {
   font-size: 0;
 }
 
-.reel-coffee {
+.reel-coffee-basic,
+.reel-coffee-advanced,
+.reel-fruit
+ {
   display: inline-block;
   height: 100px;
   width: 100px;
+}
+
+.reel-coffee-basic {
   background: url(coffee.png) repeat-y;
 }
 
+#reel-coffee-advanced-1 {
+  background: url(coffee-machine.png) repeat-y;
+}
+
+#reel-coffee-advanced-2 {
+  background: url(coffee-filter.png) repeat-y;
+}
+
+#reel-coffee-advanced-3 {
+  background: url(coffee-core.png) repeat-y;
+}
+
 .reel-fruit {
-  display: inline-block;
-  height: 100px;
-  width: 100px;
   background: url(fruit.png) repeat-y;
 }
 

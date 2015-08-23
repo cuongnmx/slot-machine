@@ -1,24 +1,24 @@
 var SlotMachine = require('../src/slot-machine');
 
-var reelContainerCoffee = document.getElementById('container-reel-coffee');
-var startButtonCoffee = document.getElementById('button-start-coffee');
-var resultContainerCoffee = document.getElementById('result-coffee');
+var reelContainerCoffeeBasic = document.getElementById('container-reel-coffee-basic');
+var startButtonCoffeeBasic = document.getElementById('button-start-coffee-basic');
+var resultContainerCoffeeBasic = document.getElementById('result-coffee-basic');
 
-var reelCoffee1 = document.getElementById('reel-coffee-1');
-var reelCoffee2 = document.getElementById('reel-coffee-2');
-var reelCoffee3 = document.getElementById('reel-coffee-3');
+var reelCoffeeBasic1 = document.getElementById('reel-coffee-basic-1');
+var reelCoffeeBasic2 = document.getElementById('reel-coffee-basic-2');
+var reelCoffeeBasic3 = document.getElementById('reel-coffee-basic-3');
 
-var slotMachineCoffee = new SlotMachine({
+var slotMachineCoffeeBasic = new SlotMachine({
   reels: [
       ['coffee maker', 'teapot', 'espresso machine'],
       ['coffee filter', 'tea strainer', 'espresso tamper'],
       ['coffee grounds', 'loose tea', 'ground espresso beans']
     ],
-  sequence: ['coffee', 'tea', 'expresso'],
-  reelNodes: [reelCoffee1, reelCoffee2, reelCoffee3],
-  reelContainer: reelContainerCoffee,
-  startButton: startButtonCoffee,
-  resultContainer: resultContainerCoffee,
+  sequence: ['coffee', 'tea', 'espresso'],
+  reelNodes: [reelCoffeeBasic1, reelCoffeeBasic2, reelCoffeeBasic3],
+  reelContainer: reelContainerCoffeeBasic,
+  startButton: startButtonCoffeeBasic,
+  resultContainer: resultContainerCoffeeBasic,
   slotHeight: 100,
   text: {
     jackpot: 'Congratulations, you won a free {option}.',
@@ -30,7 +30,39 @@ var slotMachineCoffee = new SlotMachine({
   }
 });
 
-slotMachineCoffee.init();
+slotMachineCoffeeBasic.init();
+
+var reelContainerCoffeeAdvanced = document.getElementById('container-reel-coffee-advanced');
+var startButtonCoffeeAdvanced = document.getElementById('button-start-coffee-advanced');
+var resultContainerCoffeeAdvanced = document.getElementById('result-coffee-advanced');
+
+var reelCoffeeAdvanced1 = document.getElementById('reel-coffee-advanced-1');
+var reelCoffeeAdvanced2 = document.getElementById('reel-coffee-advanced-2');
+var reelCoffeeAdvanced3 = document.getElementById('reel-coffee-advanced-3');
+
+var slotMachineCoffeeAdvanced = new SlotMachine({
+  reels: [
+      ['coffee maker', 'teapot', 'espresso machine'],
+      ['coffee filter', 'tea strainer', 'espresso tamper'],
+      ['coffee grounds', 'loose tea', 'ground espresso beans']
+    ],
+  sequence: ['coffee', 'tea', 'espresso'],
+  reelNodes: [reelCoffeeAdvanced1, reelCoffeeAdvanced2, reelCoffeeAdvanced3],
+  reelContainer: reelContainerCoffeeAdvanced,
+  startButton: startButtonCoffeeAdvanced,
+  resultContainer: resultContainerCoffeeAdvanced,
+  slotHeight: 100,
+  text: {
+    jackpot: 'Congratulations, you won a free {option}.',
+    tryAgain: 'Better luck next time.'
+  },
+  css: {
+    jackpot: 'jackpot',
+    result: 'result'
+  }
+});
+
+slotMachineCoffeeAdvanced.init();
 
 var reelContainerFruit = document.getElementById('container-reel-fruit');
 var startButtonFruit = document.getElementById('button-start-fruit');
