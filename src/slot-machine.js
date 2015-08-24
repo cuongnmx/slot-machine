@@ -16,6 +16,73 @@ window.requestAnimationFrame = (function() {
 })();
 
 /**
+ * @private
+ * returns true if the current spin has resulted in a jackpot
+ * or otherwise
+ */
+function isJackpot(selectedIndexes) {
+  for (var i = 0; i < selectedIndexes.length; i += 1) {
+    if (i > 0 && selectedIndexes[i] !== selectedIndexes[i - 1]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+/**
+ * @private
+ * spin the reel
+ * update the background-position-y value to simulate spin
+ */
+function spin(index) {
+  var reels = this.reels;
+  var reel = reels[index];
+  var spinning = false;
+
+  reel.currentPosition += reel.speed;
+  /* keep spninng if the current position is less than the stop position */
+  if (reel.currentPosition < reel.stopPosition) {
+    reel.spinning = true;
+    reel.node.style.backgroundPosition = '0px ' + reel.currentPosition + 'px';
+    window.requestAnimationFrame(function() {
+      spin.bind(this)(index);
+    }.bind(this));
+  } else {
+    reel.spinning = false;
+    /* set the background-position-y to stopPosition */
+    reel.node.style.backgroundPosition = '0px ' + reel.stopPosition + 'px';
+  }
+
+  /*
+   * determine if the SlotMachine is is motion
+   * if all the reels have stopped
+   */
+  for (var i = 0; i < reels.length; i += 1) {
+    spinning = spinning || reels[i].spinning;
+  }
+  /**
+   * enable the start button if none of the reel is in motion
+   * display the result of the current spin
+   */
+  if (!spinning) {
+    this.startButton.removeAttribute('disabled');
+
+    if(isJackpot(this.selectedIndexes)) {
+      /* if jackpot */
+      this.reelContainer.classList.add(this.css.jackpot);
+      /*
+       * fetch the the option from this.sequence
+       * replace '{drink}' in the jackpot text with the option fetched.
+       */
+      this.resultContainer.innerHTML = '<p class="' + this.css.result + '">' + this.text.jackpot.replace('{option}', this.sequence[this.selectedIndexes[0]]) + '</p>';
+    } else {
+      /* or otherwise; try again */
+      this.resultContainer.innerHTML = '<p class="' + this.css.result + '">' + this.text.tryAgain + '</p>';
+    }
+  }
+}
+
+/**
  * returns a SlotMachine.
  * @class SlotMachine
  * @param {Object} config - configuration object.
@@ -37,6 +104,7 @@ window.requestAnimationFrame = (function() {
  * example/main.css for style guide
  */
 function SlotMachine(config) {
+  var self = this;
   var text;
   var css;
 
@@ -161,119 +229,52 @@ function SlotMachine(config) {
   });
    */
 
-}
-
-/**
- * @private
- * returns true if the current spin has resulted in a jackpot
- * or otherwise
- */
-function isJackpot(selectedIndexes) {
-  for (var i = 0; i < selectedIndexes.length; i += 1) {
-    if (i > 0 && selectedIndexes[i] !== selectedIndexes[i - 1]) {
-      return false;
-    }
-  }
-  return true;
-}
-
-/**
- * @private
- * spin the reel
- * update the background-position-y value to simulate spin
- */
-function spin(index) {
-  var reels = this.reels;
-  var reel = reels[index];
-  var spinning = false;
-
-  reel.currentPosition += reel.speed;
-  /* keep spninng if the current position is less than the stop position */
-  if (reel.currentPosition < reel.stopPosition) {
-    reel.spinning = true;
-    reel.node.style.backgroundPosition = '0px ' + reel.currentPosition + 'px';
-    window.requestAnimationFrame(function() {
-      spin.bind(this)(index);
-    }.bind(this));
-  } else {
-    reel.spinning = false;
-    /* set the background-position-y to stopPosition */
-    reel.node.style.backgroundPosition = '0px ' + reel.stopPosition + 'px';
-  }
-
-  /*
-   * determine if the SlotMachine is is motion
-   * if all the reels have stopped
-   */
-  for (var i = 0; i < reels.length; i += 1) {
-    spinning = spinning || reels[i].spinning;
-  }
   /**
-   * enable the start button if none of the reel is in motion
-   * display the result of the current spin
+   * @private
+   * start the initialize instance of a SlotMachine
+   * when the startButton is clicked
    */
-  if (!spinning) {
-    this.startButton.removeAttribute('disabled');
+  function start() {
+    var selectedIndexes = [];
+    /* on (re)start empty the resultContainer */
+    self.resultContainer.innerHTML = '';
+    /* on (re)start remove the 'jackpot' class from the reelContainer */
+    self.reelContainer.classList.remove(self.css.jackpot);
+    /* on (re)start disable the startButton */
+    self.startButton.setAttribute('disabled', true);
 
-    if(isJackpot(this.selectedIndexes)) {
-      /* if jackpot */
-      this.reelContainer.classList.add(this.css.jackpot);
+    /* for each real; prefrom the following */
+    self.reels.forEach(function(reel, index) {
+      /* randomly choose which slot is to selected */
+      var selectedIndex = reel.updateSelectedIndex();
       /*
-       * fetch the the option from this.sequence
-       * replace '{drink}' in the jackpot text with the option fetched.
+       * store the selectedIndex in the selectedIndexes
+       * it will be used to detect the option during jackpot
        */
-      this.resultContainer.innerHTML = '<p class="' + this.css.result + '">' + this.text.jackpot.replace('{option}', this.sequence[this.selectedIndexes[0]]) + '</p>';
-    } else {
-      /* or otherwise; try again */
-      this.resultContainer.innerHTML = '<p class="' + this.css.result + '">' + this.text.tryAgain + '</p>';
-    }
+      selectedIndexes.push(selectedIndex);
+      /* randomly choose a speed between MAX_SPEED & MIN_SPEED to spin the reel */
+      reel.speed = Math.floor( Math.random() * (MAX_SPEED - MIN_SPEED + 1)) + MIN_SPEED;
+      reel.currentPosition = 0;
+      /*
+       * calculate the stopPosition
+       * slotHeight * number of slots * SPIN_COUNT will produce full spin stopPosition
+       * (selectedIndex + 1) * self.slotHeight will produce the offset for the currently selected slot
+       */
+      reel.stopPosition = (self.slotHeight * reel.slots.length * SPIN_COUNT) + ( (selectedIndex + 1) * self.slotHeight);
+      spin.bind(self)(index);
+    });
+
+    self.selectedIndexes = selectedIndexes;
   }
+
+  /**
+   * @function init
+   * initialize the instance of a SlotMachine
+   */
+  this.init = function() {
+    this.startButton.addEventListener('click', start);
+  };
+
 }
-
-/**
- * @private
- * start the initialize instance of a SlotMachine
- * when the startButton is clicked
- */
-function start() {
-  var selectedIndexes = [];
-  /* on (re)start empty the resultContainer */
-  this.resultContainer.innerHTML = '';
-  /* on (re)start remove the 'jackpot' class from the reelContainer */
-  this.reelContainer.classList.remove(this.css.jackpot);
-  /* on (re)start disable the startButton */
-  this.startButton.setAttribute('disabled', true);
-
-  /* for each real; prefrom the following */
-  this.reels.forEach(function(reel, index) {
-    /* randomly choose which slot is to selected */
-    var selectedIndex = reel.updateSelectedIndex();
-    /*
-     * store the selectedIndex in the selectedIndexes
-     * it will be used to detect the option during jackpot
-     */
-    selectedIndexes.push(selectedIndex);
-    /* randomly choose a speed between MAX_SPEED & MIN_SPEED to spin the reel */
-    reel.speed = Math.floor( Math.random() * (MAX_SPEED - MIN_SPEED + 1)) + MIN_SPEED;
-    reel.currentPosition = 0;
-    /*
-     * calculate the stopPosition
-     * slotHeight * number of slots * SPIN_COUNT will produce full spin stopPosition
-     * (selectedIndex + 1) * this.slotHeight will produce the offset for the currently selected slot
-     */
-    reel.stopPosition = (this.slotHeight * reel.slots.length * SPIN_COUNT) + ( (selectedIndex + 1) * this.slotHeight);
-    spin.bind(this)(index);
-  }.bind(this));
-
-  this.selectedIndexes = selectedIndexes;
-}
-
-/**
- * @function init
- * initialize the instance of a SlotMachine
- */
-SlotMachine.prototype.init = function() {
-  this.startButton.addEventListener('click', start.bind(this));
-};
 
 module.exports = SlotMachine;
