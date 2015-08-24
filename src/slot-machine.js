@@ -73,7 +73,7 @@ function spin(index) {
       this.reelContainer.classList.add(this.css.jackpot);
       /*
        * fetch the the option from this.sequence
-       * replace '{drink}' in the jackpot text with the option fetched.
+       * replace '{option}' in the jackpot text with the option fetched.
        */
       this.resultContainer.innerHTML = '<p class="' + this.css.result + '">' + this.text.jackpot.replace('{option}', this.sequence[this.selectedIndexes[0]]) + '</p>';
     } else {
@@ -88,7 +88,7 @@ function spin(index) {
  * @class SlotMachine
  * @param {Object} config - configuration object.
  * @param {Object} config.text - outcome of the SlotMachine spin.
- * @param {String} config.text.jackpot - text to be displayed on jackpot 'Congratulations, you won a free {drink}'
+ * @param {String} config.text.jackpot - text to be displayed on jackpot 'Congratulations, you won a free {option}'
  * @param {String} config.text.tryAgain - text to be displayed to try again 'Better luck next time.'
  * @param {Object} config.css - css class names to be used by the SlotMachine.
  * @param {String} config.css.result - css class to be applied on the result Node
@@ -113,7 +113,7 @@ function SlotMachine(config) {
 
   /* istanbul ignore next */
   text = {
-    jackpot: text && text.jackpot ? text.jackpot : 'Congratulations, you won a free {drink}',
+    jackpot: text && text.jackpot ? text.jackpot : 'Congratulations, you won a free {option}',
     tryAgain: text && text.tryAgain ? text.tryAgain : 'Better luck next time.'
   };
 
