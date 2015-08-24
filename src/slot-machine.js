@@ -234,9 +234,7 @@ function start() {
  * initialize the instance of a SlotMachine
  */
 SlotMachine.prototype.init = function() {
-  this.startButton.addEventListener('click', function() {
-    start.bind(this)();
-  }.bind(this));
+  this.startButton.addEventListener('click', start.bind(this));
 };
 
 module.exports = SlotMachine;
