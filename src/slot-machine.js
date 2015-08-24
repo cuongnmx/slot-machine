@@ -108,7 +108,6 @@ function SlotMachine(config) {
   var _this = this;
   var text = config.text;
   var css = config.css;
-  var sequence = config.sequence;
   var reels = [];
 
   /* istanbul ignore next */
@@ -127,53 +126,23 @@ function SlotMachine(config) {
    * validate the passed argumenets
    * throw error on invalid arguments
    */
-  if (!config.slotHeight) {
-    throw 'slotHeight must be provided';
-  }
-  if (!config.slotHeight.toString().match(/^\d*$/)) {
-    throw 'slotHeight must be a number';
-  }
-
-  if (!config.resultContainer) {
-    throw 'resultContainer must be provided';
-  }
-
-  if (!config.startButton) {
-    throw 'startButton must be provided';
-  }
-
-  if (!config.reelContainer) {
-    throw 'reelContainer must be provided';
-  }
-
-  if (!config.reelNodes) {
-    throw 'reelNodes must be provided';
-  }
-
-  if( !(sequence instanceof Array) ) {
-    throw 'sequence must be an array';
-  }
-
-  if( !(config.reels instanceof Array) ) {
-    throw 'reels must be an array';
-  }
-  if (config.reels.length < 2) {
-    throw 'two reels required at minimum';
-  }
+  if (!config.slotHeight) { throw 'slotHeight must be provided'; }
+  if (!config.slotHeight.toString().match(/^\d*$/)) { throw 'slotHeight must be a number'; }
+  if (!config.resultContainer) { throw 'resultContainer must be provided'; }
+  if (!config.startButton) { throw 'startButton must be provided'; }
+  if (!config.reelContainer) { throw 'reelContainer must be provided'; }
+  if (!config.reelNodes) { throw 'reelNodes must be provided'; }
+  if (!(config.sequence instanceof Array) ) { throw 'sequence must be an array'; }
+  if (!(config.reels instanceof Array) ) { throw 'reels must be an array'; }
+  if (config.reels.length < 2) { throw 'two reels required at minimum'; }
 
   for (var i = 0; i < config.reels.length; i += 1) {
-    if (config.reels[i].length < 2) {
-      throw 'two slots per reel is required at minimum';
-    }
-    if (i > 0 && config.reels[i].length !== config.reels[i - 1].length) {
-      throw 'all the reels must be of same number of slots';
-    }
+    if (config.reels[i].length < 2) { throw 'two slots per reel is required at minimum'; }
+    if (i > 0 && config.reels[i].length !== config.reels[i - 1].length) { throw 'all the reels must be of same number of slots'; }
     reels.push(new Reel(config.reels[i], config.reelNodes[i]));
   }
 
-  if (sequence.length !== config.reels[0].length) {
-    throw 'sequence must have equal number of entries with respect to reels';
-  }
+  if (config.sequence.length !== config.reels[0].length) { throw 'sequence must have equal number of entries with respect to reels'; }
 
   /* setting up properties in writable: false mode */
   Object.defineProperties(this, {
