@@ -254,6 +254,12 @@ describe('SlotMachine', function() {
       assert.isTrue(spy.called);
     });
 
+    it('should not disable the startButton if the slotMachine is disabled', function() {
+      slotMachine.disable();
+      event.triggerClickEvent(startButton);
+      assert.isNull(startButton.getAttribute('disabled'));
+    });
+
     // it('should result in Jackpot, for tea', function(done) {
     //   this.timeout(10000);
     //   slotMachine.reels.forEach(function(reel) {
