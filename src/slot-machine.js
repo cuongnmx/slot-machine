@@ -40,7 +40,7 @@ function SlotMachine(config) {
   var text;
   var css;
 
-  var reels = config.reels;
+  var reels = [];
   var sequence = config.sequence;
 
   text = config.text;
@@ -66,61 +66,100 @@ function SlotMachine(config) {
   if (!config.slotHeight) {
     throw 'slotHeight must be provided';
   }
-
   if (!config.slotHeight.toString().match(/^\d*$/)) {
     throw 'slotHeight must be a number';
   }
-  this.slotHeight = config.slotHeight;
+  Object.defineProperty( this, 'slotHeight', {
+    value: config.slotHeight
+  });
 
   if (!config.resultContainer) {
     throw 'resultContainer must be provided';
   }
-  this.resultContainer = config.resultContainer;
+  Object.defineProperty( this, 'resultContainer', {
+    value: config.resultContainer
+  });
 
   if (!config.startButton) {
     throw 'startButton must be provided';
   }
-  this.startButton = config.startButton;
+  Object.defineProperty( this, 'startButton', {
+    value: config.startButton
+  });
 
   if (!config.reelContainer) {
     throw 'reelContainer must be provided';
   }
-  this.reelContainer = config.reelContainer;
+  Object.defineProperty( this, 'reelContainer', {
+    value: config.reelContainer
+  });
 
   if (!config.reelNodes) {
     throw 'reelNodes must be provided';
   }
-  this.reelNodes = config.reelNodes;
+  Object.defineProperty( this, 'reelNodes', {
+    value: config.reelNodes
+  });
 
   if( !(sequence instanceof Array) ) {
     throw 'sequence must be an array';
   }
+  Object.defineProperty( this, 'sequence', {
+    value: config.sequence
+  });
 
-  this.sequence = sequence;
-
-  if( !(reels instanceof Array) ) {
+  if( !(config.reels instanceof Array) ) {
     throw 'reels must be an array';
   }
-  if (reels.length < 2) {
+  if (config.reels.length < 2) {
     throw 'two reels required at minimum';
   }
 
-  this.reels = [];
-
-  for (var i = 0; i < reels.length; i += 1) {
-    if (reels[i].length < 2) {
+  for (var i = 0; i < config.reels.length; i += 1) {
+    if (config.reels[i].length < 2) {
       throw 'two slots per reel is required at minimum';
     }
-    if (i > 0 && reels[i].length !== reels[i - 1].length) {
+    if (i > 0 && config.reels[i].length !== config.reels[i - 1].length) {
       throw 'all the reels must be of same number of slots';
     }
-    this.reels.push(new Reel(reels[i], this.reelNodes[i]));
+    reels.push(new Reel(config.reels[i], this.reelNodes[i]));
   }
+  Object.defineProperty( this, 'reels', {
+    value: reels
+  });
 
-  if (sequence.length !== reels[0].length) {
+  if (sequence.length !== config.reels[0].length) {
     throw 'sequence must have equal number of entries with respect to reels';
   }
 
+  /*
+   * ToDo
+   * use Object.defineProperties
+   * need to be refactored
+  Object.defineProperties(this, {
+    'slotHeight': {
+      value: config.slotHeight
+    },
+    'resultContainer': {
+      value: config.resultContainer
+    },
+    'startButton': {
+      value: config.startButton
+    },
+    'reelContainer': {
+      value: config.reelContainer
+    },
+    'reelNodes': {
+      value: config.reelNodes
+    },
+    'sequence': {
+      value: config.sequence
+    },
+    'reels': {
+      value: config.reels
+    }
+  });
+   */
 
 }
 
