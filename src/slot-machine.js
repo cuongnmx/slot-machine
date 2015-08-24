@@ -104,7 +104,7 @@ function spin(index) {
  * example/main.css for style guide
  */
 function SlotMachine(config) {
-  var self = this;
+  var _this = this;
   var text;
   var css;
 
@@ -237,14 +237,14 @@ function SlotMachine(config) {
   function start() {
     var selectedIndexes = [];
     /* on (re)start empty the resultContainer */
-    self.resultContainer.innerHTML = '';
+    _this.resultContainer.innerHTML = '';
     /* on (re)start remove the 'jackpot' class from the reelContainer */
-    self.reelContainer.classList.remove(self.css.jackpot);
+    _this.reelContainer.classList.remove(_this.css.jackpot);
     /* on (re)start disable the startButton */
-    self.startButton.setAttribute('disabled', true);
+    _this.startButton.setAttribute('disabled', true);
 
     /* for each real; prefrom the following */
-    self.reels.forEach(function(reel, index) {
+    _this.reels.forEach(function(reel, index) {
       /* randomly choose which slot is to selected */
       var selectedIndex = reel.updateSelectedIndex();
       /*
@@ -258,13 +258,13 @@ function SlotMachine(config) {
       /*
        * calculate the stopPosition
        * slotHeight * number of slots * SPIN_COUNT will produce full spin stopPosition
-       * (selectedIndex + 1) * self.slotHeight will produce the offset for the currently selected slot
+       * (selectedIndex + 1) * _this.slotHeight will produce the offset for the currently selected slot
        */
-      reel.stopPosition = (self.slotHeight * reel.slots.length * SPIN_COUNT) + ( (selectedIndex + 1) * self.slotHeight);
-      spin.bind(self)(index);
+      reel.stopPosition = (_this.slotHeight * reel.slots.length * SPIN_COUNT) + ( (selectedIndex + 1) * _this.slotHeight);
+      spin.bind(_this)(index);
     });
 
-    self.selectedIndexes = selectedIndexes;
+    _this.selectedIndexes = selectedIndexes;
   }
 
   /**
