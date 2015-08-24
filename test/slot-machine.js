@@ -248,6 +248,12 @@ describe('SlotMachine', function() {
       }, 5000);
     });
 
+    it('should disable the slotMachine', function() {
+      var spy = sinon.spy(slotMachine, 'disable');
+      slotMachine.disable();
+      assert.isTrue(spy.called);
+    });
+
     // it('should result in Jackpot, for tea', function(done) {
     //   this.timeout(10000);
     //   slotMachine.reels.forEach(function(reel) {

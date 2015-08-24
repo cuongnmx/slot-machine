@@ -275,6 +275,14 @@ function SlotMachine(config) {
     this.startButton.addEventListener('click', start);
   };
 
+  /**
+   * @function disable
+   * disable the instance of a SlotMachine
+   */
+  this.disable = function() {
+    this.startButton.removeEventListener('click', start);
+  };
+
 }
 
 module.exports = SlotMachine;
