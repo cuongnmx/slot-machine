@@ -35,6 +35,7 @@ function isJackpot(selectedIndexes) {
  * update the background-position-y value to simulate spin
  */
 function spin(index) {
+  var _this = this;
   var reels = this.reels;
   var reel = reels[index];
   var spinning = false;
@@ -45,8 +46,8 @@ function spin(index) {
     reel.spinning = true;
     reel.node.style.backgroundPosition = '0px ' + reel.currentPosition + 'px';
     window.requestAnimationFrame(function() {
-      spin.bind(this)(index);
-    }.bind(this));
+      spin.bind(_this)(index);
+    });
   } else {
     reel.spinning = false;
     /* set the background-position-y to stopPosition */
