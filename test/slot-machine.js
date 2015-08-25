@@ -60,7 +60,7 @@ describe('SlotMachine', function() {
         slotMachineData.slotHeight = null;
         slotMachine = new SlotMachine(slotMachineData);
       } catch(e) {
-        assert.equal(e, 'slotHeight must be provided');
+        assert.equal(e.message, 'slotHeight must be provided');
       }
     });
 
@@ -69,7 +69,7 @@ describe('SlotMachine', function() {
         slotMachineData.slotHeight = 'string';
         slotMachine = new SlotMachine(slotMachineData);
       } catch(e) {
-        assert.equal(e, 'slotHeight must be a number');
+        assert.equal(e.message, 'slotHeight must be a number');
       }
     });
 
@@ -78,7 +78,7 @@ describe('SlotMachine', function() {
         slotMachineData.resultContainer = null;
         slotMachine = new SlotMachine(slotMachineData);
       } catch(e) {
-        assert.equal(e, 'resultContainer must be provided');
+        assert.equal(e.message, 'resultContainer must be provided');
       }
     });
 
@@ -87,7 +87,7 @@ describe('SlotMachine', function() {
         slotMachineData.startButton = null;
         slotMachine = new SlotMachine(slotMachineData);
       } catch(e) {
-        assert.equal(e, 'startButton must be provided');
+        assert.equal(e.message, 'startButton must be provided');
       }
     });
 
@@ -96,7 +96,7 @@ describe('SlotMachine', function() {
         slotMachineData.reelContainer = null;
         slotMachine = new SlotMachine(slotMachineData);
       } catch(e) {
-        assert.equal(e, 'reelContainer must be provided');
+        assert.equal(e.message, 'reelContainer must be provided');
       }
     });
 
@@ -105,7 +105,7 @@ describe('SlotMachine', function() {
         slotMachineData.reelNodes = null;
         slotMachine = new SlotMachine(slotMachineData);
       } catch(e) {
-        assert.equal(e, 'reelNodes must be provided');
+        assert.equal(e.message, 'reelNodes must be provided');
       }
     });
 
@@ -114,7 +114,7 @@ describe('SlotMachine', function() {
         slotMachineData.sequence = null;
         slotMachine = new SlotMachine(slotMachineData);
       } catch(e) {
-        assert.equal(e, 'sequence must be an array');
+        assert.equal(e.message, 'sequence must be an array');
       }
     });
 
@@ -124,7 +124,7 @@ describe('SlotMachine', function() {
         slotMachineData.reels = ' ';
         slotMachine = new SlotMachine(slotMachineData);
       } catch(e) {
-        assert.equal(e, 'reels must be an array');
+        assert.equal(e.message, 'reels must be an array');
       }
     });
 
@@ -134,7 +134,7 @@ describe('SlotMachine', function() {
         slotMachineData.reels = [''];
         slotMachine = new SlotMachine(slotMachineData);
       } catch(e) {
-        assert.equal(e, 'two reels required at minimum');
+        assert.equal(e.message, 'two reels required at minimum');
       }
     });
 
@@ -144,7 +144,7 @@ describe('SlotMachine', function() {
         slotMachineData.reels = [[''], ['']];
         slotMachine = new SlotMachine(slotMachineData);
       } catch(e) {
-        assert.equal(e, 'two slots per reel is required at minimum');
+        assert.equal(e.message, 'two slots per reel is required at minimum');
       }
     });
 
@@ -154,7 +154,7 @@ describe('SlotMachine', function() {
         slotMachineData.reels = [['', '', ''], ['', '']];
         slotMachine = new SlotMachine(slotMachineData);
       } catch(e) {
-        assert.equal(e, 'all the reels must be of same number of slots');
+        assert.equal(e.message, 'all the reels must be of same number of slots');
       }
     });
 
@@ -164,7 +164,7 @@ describe('SlotMachine', function() {
         slotMachineData.reels = [['', '', ''], ['', '', ''], ['', '', '']];
         slotMachine = new SlotMachine(slotMachineData);
       } catch(e) {
-        assert.equal(e, 'sequence must have equal number of entries with respect to reels');
+        assert.equal(e.message, 'sequence must have equal number of entries with respect to reels');
       }
     });
 
