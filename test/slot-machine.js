@@ -175,6 +175,22 @@ describe('SlotMachine', function() {
       assert.isObject(slotMachine);
     });
 
+    it('should not allow to modify its readonly properties', function() {
+      slotMachineData.sequence = ['', ''];
+      slotMachineData.reels = [['', ''], ['', '']];
+      slotMachine = new SlotMachine(slotMachineData);
+      try { slotMachine.text = ''; } catch(e) { assert.isNotNull(e); }
+      try { slotMachine.css = ''; } catch(e) { assert.isNotNull(e); }
+      try { slotMachine.slotHeight = ''; } catch(e) { assert.isNotNull(e); }
+      try { slotMachine.resultContainer = ''; } catch(e) { assert.isNotNull(e); }
+      try { slotMachine.startButton = ''; } catch(e) { assert.isNotNull(e); }
+      try { slotMachine.reelContainer = ''; } catch(e) { assert.isNotNull(e); }
+      try { slotMachine.reelNodes = ''; } catch(e) { assert.isNotNull(e); }
+      try { slotMachine.sequence = ''; } catch(e) { assert.isNotNull(e); }
+      try { slotMachine.reels = ''; } catch(e) { assert.isNotNull(e); }
+
+    });
+
   });
 
   describe('initialization and beahvior', function() {
