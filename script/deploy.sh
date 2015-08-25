@@ -9,10 +9,10 @@ if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
     git config user.email "sarbbottam@gmail.com"
     cp ../example/index.html ./index.html
     cp ../example/main.css ./main.css
-    cp ../example/coffee.png ./coffee.png
-    cp ../example/coffee-core.png ./coffee-core.png
-    cp ../example/coffee-filter.png ./coffee-filter.png
-    cp ../example/coffee-machine.png ./coffee-machine.png
+    cp ../example/drink.png ./drink.png
+    cp ../example/drink-main.png ./drink-main.png
+    cp ../example/drink-filter.png ./drink-filter.png
+    cp ../example/drink-machine.png ./drink-machine.png
     cp ../example/fruit.png ./fruit.png
     cp ../example/main.js ./main.js
     git add .
