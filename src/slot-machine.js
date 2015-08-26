@@ -1,7 +1,7 @@
 'use strict';
 
-var MAX_SPEED = 25;
-var MIN_SPEED = 12;
+var MAX_SPEED = 24;
+var MIN_SPEED = 21;
 var SPIN_COUNT = 10;
 var Reel = require('./reel');
 
